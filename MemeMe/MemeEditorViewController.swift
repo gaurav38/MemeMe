@@ -16,7 +16,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
-    @IBOutlet weak var navigationBar: UINavigationBar!
     
     let defaultTopTextFieldText = "TOP"
     let defaultBottomTextFieldText = "BOTTOM"
@@ -132,6 +131,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             if success {
                 self.save()
                 self.dismiss(animated: true, completion: nil)
+                self.performSegue(withIdentifier: "memesTableView", sender: self)
             }
         }
         self.present(activityViewContoller, animated: true, completion: nil)
@@ -178,17 +178,17 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemedImage() {
         toolBar.isHidden = true
-        navigationBar.isHidden = true
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         self.memedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         toolBar.isHidden = false
-        navigationBar.isHidden = false
     }
     
     func save() {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: self.memedImage)
+        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
+        
     }
 
 
