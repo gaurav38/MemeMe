@@ -131,7 +131,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             if success {
                 self.save()
                 self.dismiss(animated: true, completion: nil)
-                self.performSegue(withIdentifier: "memesTableView", sender: self)
+                self.performSegue(withIdentifier: "memesTabView", sender: self)
             }
         }
         self.present(activityViewContoller, animated: true, completion: nil)

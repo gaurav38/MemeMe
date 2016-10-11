@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SentMemesCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class SentMemesCollectionViewController: UICollectionViewController {
 
     var memes: [Meme] {
         return (UIApplication.shared.delegate as! AppDelegate).memes
@@ -25,11 +25,11 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDeleg
         // Dispose of any resources that can be recreated.
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemesCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.row]
         cell.topText.text = meme.topText
@@ -38,7 +38,7 @@ class SentMemesCollectionViewController: UIViewController, UICollectionViewDeleg
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailsViewController.meme = memes[indexPath.row]
         self.navigationController?.pushViewController(detailsViewController, animated: true)
