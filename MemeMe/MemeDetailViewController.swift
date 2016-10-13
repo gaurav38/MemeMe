@@ -12,14 +12,22 @@ import UIKit
 class MemeDetailViewController: UIViewController {
     
     var meme: Meme!
+    var shouldHideNavBar: Bool = true
     
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var topText: UILabel!
-    @IBOutlet weak var bottomText: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
-        imageView.image = meme.originalImage
-        topText.text = meme.topText
-        bottomText.text = meme.bottomText
+        imageView.image = meme.memedImage
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        let touch = touches.first
+        
+        if touch?.phase == UITouchPhase.began {
+            self.navigationController?.setNavigationBarHidden(shouldHideNavBar, animated: true)
+            shouldHideNavBar = !shouldHideNavBar
+        }
     }
 }

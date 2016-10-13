@@ -14,10 +14,20 @@ class SentMemesCollectionViewController: UICollectionViewController {
         return (UIApplication.shared.delegate as! AppDelegate).memes
     }
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let space: CGFloat = 3.0
+        let width = (view.frame.size.width - (2 * space)) / 3.0
+        let height = (view.frame.size.height - (3 * space)) / 4.0
+        var itemSize: CGSize = CGSize()
+        itemSize.height = height
+        itemSize.width = width
+        
+        flowLayout.minimumInteritemSpacing = space
+        flowLayout.itemSize = itemSize
     }
 
     override func didReceiveMemoryWarning() {
