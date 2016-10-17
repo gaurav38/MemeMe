@@ -16,6 +16,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var TopTextFieldVerticalSpacingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var BottomTextFieldVerticalSpacingConstraint: NSLayoutConstraint!
     
     let defaultTopTextFieldText = "TOP"
     let defaultBottomTextFieldText = "BOTTOM"
@@ -38,6 +40,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
+        subscribeToOrientationChangeNotification()
+        rotated()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         shareButton.isEnabled = imageView.image != nil
     }
@@ -45,6 +49,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
+        unsubscribeToOrientationChangeNotification()
     }
 
     override func didReceiveMemoryWarning() {
@@ -166,6 +171,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return keyboardSize.cgRectValue.height
     }
     
+    func rotated()
+    {
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            TopTextFieldVerticalSpacingConstraint.constant = 55
+            BottomTextFieldVerticalSpacingConstraint.constant = 55
+        }
+        if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+            TopTextFieldVerticalSpacingConstraint.constant = 25
+            BottomTextFieldVerticalSpacingConstraint.constant = 25
+        }
+    }
+    
     func subscribeToKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
@@ -174,6 +191,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func unsubscribeFromKeyboardNotifications() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+    }
+    
+    func subscribeToOrientationChangeNotification()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    func unsubscribeToOrientationChangeNotification()
+    {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     func generateMemedImage() {
@@ -190,7 +217,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
         
     }
-
 
 }
 
