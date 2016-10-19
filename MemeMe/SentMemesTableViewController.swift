@@ -12,11 +12,22 @@ import UIKit
 class SentMemesTableViewController: UITableViewController {
     
     var memes: [Meme] {
-        return (UIApplication.shared.delegate as! AppDelegate).memes
+        return appDelegate.memes
     }
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if memes.count == 0 {
+            createNewMeme()
+        } else {
+            super.viewWillAppear(true)
+            self.tableView.reloadData()
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,12 +39,12 @@ class SentMemesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")! as UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTableViewCell")! as! MemeTableViewCell
         let meme = memes[indexPath.row]
         
-        cell.imageView?.image = meme.originalImage
-        cell.textLabel?.text = meme.topText
-        cell.detailTextLabel?.text = meme.bottomText
+        cell.tableViewCellImageView.image = meme.originalImage
+        cell.tableViewCellTopText.text = meme.topText
+        cell.tableViewCellBottomText.text = meme.bottomText
         
         return cell
     }
@@ -42,5 +53,23 @@ class SentMemesTableViewController: UITableViewController {
         let detailsViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailsViewController.meme = memes[indexPath.row]
         self.navigationController?.pushViewController(detailsViewController, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            appDelegate.memes.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            self.editButton.title = "Edit"
+        }
+    }
+    
+    @IBAction func createNewMeme() {
+        let memeEditor = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        self.present(memeEditor, animated: true, completion: nil)
+    }
+    
+    @IBAction func eidtButtonPressed() {
+        self.tableView.setEditing(!self.tableView.isEditing, animated: true)
+        self.editButton.title = self.tableView.isEditing ? "Cancel" : "Edit"
     }
 }

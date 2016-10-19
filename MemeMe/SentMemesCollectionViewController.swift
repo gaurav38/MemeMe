@@ -10,20 +10,23 @@ import UIKit
 
 class SentMemesCollectionViewController: UICollectionViewController {
 
-    var memes: [Meme] {
-        return (UIApplication.shared.delegate as! AppDelegate).memes
-    }
+    var memes = [Meme]()
+    var appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    var selectedMemeIndex = 0
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateItemSizeBasedOnOrientation()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        memes = appDelegate.memes
+        updateItemSizeBasedOnOrientation()
         subscribeToOrientationChangeNotification()
+        self.collectionView?.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,6 +78,23 @@ class SentMemesCollectionViewController: UICollectionViewController {
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
+//    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
+//        let deleteMenuItem = UIMenuItem(title: "Delete Meme", action: "delete:")
+//        UIMenuController.shared.menuItems = [deleteMenuItem]
+//        return true
+//    }
+//    
+//    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
+//        return action == "delete:"
+//    }
+//    
+//    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
+//        if action == "delete:" {
+//            appDelegate.memes.remove(at: indexPath.row)
+//            collectionView.deleteItems(at: [indexPath])
+//        }
+//    }
+    
     func subscribeToOrientationChangeNotification()
     {
         NotificationCenter.default.addObserver(self, selector: #selector(updateItemSizeBasedOnOrientation), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
@@ -83,5 +103,10 @@ class SentMemesCollectionViewController: UICollectionViewController {
     func unsubscribeToOrientationChangeNotification()
     {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    @IBAction func createNewMeme(_ sender: AnyObject) {
+        let memeEditor = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        self.present(memeEditor, animated: true, completion: nil)
     }
 }

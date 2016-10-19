@@ -15,6 +15,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var toolBar: UIToolbar!
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var TopTextFieldVerticalSpacingConstraint: NSLayoutConstraint!
     @IBOutlet weak var BottomTextFieldVerticalSpacingConstraint: NSLayoutConstraint!
@@ -148,17 +149,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             if success {
                 self.save()
                 self.dismiss(animated: true, completion: nil)
-                self.performSegue(withIdentifier: "memesTabView", sender: self)
             }
         }
         self.present(activityViewContoller, animated: true, completion: nil)
     }
     
     @IBAction func cancelMeme(_ sender: AnyObject) {
-        resetTextFields()
-        imageView.image = nil
-        memedImage = nil
-        shareButton.isEnabled = false
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -209,10 +205,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generateMemedImage() {
         toolBar.isHidden = true
+        navigationBar.isHidden = true
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         self.memedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
+        navigationBar.isHidden = false
         toolBar.isHidden = false
     }
     

@@ -16,6 +16,10 @@ class MemeDetailViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         imageView.image = meme.memedImage
     }

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MemeMe/SentMemesTableViewController.swift"
-            timestampString = "498103856.961906"
+            timestampString = "498591002.33086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "55"
-            endingLineNumber = "55">
+            startingLineNumber = "84"
+            endingLineNumber = "84">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -24,11 +24,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MemeMe/SentMemesTableViewController.swift"
-            timestampString = "498103856.961906"
+            timestampString = "498591002.33086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "70"
-            endingLineNumber = "70">
+            startingLineNumber = "99"
+            endingLineNumber = "99">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -38,11 +38,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MemeMe/SentMemesTableViewController.swift"
-            timestampString = "498103856.961906"
+            timestampString = "498591002.33086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67">
+            startingLineNumber = "96"
+            endingLineNumber = "96">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -52,11 +52,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MemeMe/SentMemesTableViewController.swift"
-            timestampString = "498103856.961906"
+            timestampString = "498591002.33086"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "60"
-            endingLineNumber = "60">
+            startingLineNumber = "89"
+            endingLineNumber = "89">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
