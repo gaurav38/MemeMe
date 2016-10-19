@@ -18,10 +18,32 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        updateItemSizeBasedOnOrientation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToOrientationChangeNotification()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unsubscribeToOrientationChangeNotification()
+    }
+    
+    func updateItemSizeBasedOnOrientation()
+    {
+        var width: CGFloat = 0.0
+        var height: CGFloat = 0.0
         let space: CGFloat = 3.0
-        let width = (view.frame.size.width - (2 * space)) / 3.0
-        let height = (view.frame.size.height - (3 * space)) / 4.0
+        
+        if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
+            width = (view.frame.size.width - (2 * space)) / 3.0
+            height = (view.frame.size.height - (4 * space)) / 5.0
+        } else if UIDeviceOrientationIsLandscape(UIDevice.current.orientation) {
+            width = (view.frame.size.width - (4 * space)) / 5.0
+            height = (view.frame.size.height - (2 * space)) / 3.0
+        }
         var itemSize: CGSize = CGSize()
         itemSize.height = height
         itemSize.width = width
@@ -52,6 +74,16 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let detailsViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailsViewController.meme = memes[indexPath.row]
         self.navigationController?.pushViewController(detailsViewController, animated: true)
+    }
+    
+    func subscribeToOrientationChangeNotification()
+    {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateItemSizeBasedOnOrientation), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+    
+    func unsubscribeToOrientationChangeNotification()
+    {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 
     /*
