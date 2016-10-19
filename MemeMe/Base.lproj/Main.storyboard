@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -188,17 +187,17 @@
                                                 <fragment content="Label">
                                                     <attributes>
                                                         <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                        <font key="NSFont" size="11" name="Impact"/>
+                                                        <font key="NSFont" size="12" name="Impact"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n3H-rE-bfD" userLabel="TopLabel">
-                                            <frame key="frameInset" minY="5" width="140" height="15"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzE-bu-G37" userLabel="TopLabel">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="15" id="kom-sZ-4qT"/>
+                                                <constraint firstAttribute="height" constant="15" id="5NV-Vr-Yu8"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="7il-ay-TSY"/>
                                             </constraints>
                                             <attributedString key="attributedText">
                                                 <fragment content="Label">
@@ -215,20 +214,20 @@
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="n3H-rE-bfD" firstAttribute="leading" secondItem="mbN-3H-E66" secondAttribute="leadingMargin" id="12a-gV-7J9"/>
                                     <constraint firstItem="JRF-zN-I9l" firstAttribute="leading" secondItem="mbN-3H-E66" secondAttribute="leading" id="2TD-3Z-d9y"/>
-                                    <constraint firstItem="n3H-rE-bfD" firstAttribute="trailing" secondItem="mbN-3H-E66" secondAttribute="trailingMargin" id="Idw-cO-X7z"/>
+                                    <constraint firstAttribute="trailing" secondItem="qzE-bu-G37" secondAttribute="trailing" id="GlV-IR-DHI"/>
                                     <constraint firstAttribute="trailing" secondItem="JRF-zN-I9l" secondAttribute="trailing" id="PkG-HA-dML"/>
                                     <constraint firstItem="IMq-gJ-D74" firstAttribute="leading" secondItem="mbN-3H-E66" secondAttribute="leading" id="Qhd-Er-cov"/>
                                     <constraint firstAttribute="trailing" secondItem="IMq-gJ-D74" secondAttribute="trailing" id="VVI-4O-A9y"/>
                                     <constraint firstItem="JRF-zN-I9l" firstAttribute="centerY" secondItem="mbN-3H-E66" secondAttribute="centerY" id="awa-qm-TFP"/>
-                                    <constraint firstItem="n3H-rE-bfD" firstAttribute="top" secondItem="mbN-3H-E66" secondAttribute="topMargin" constant="5" id="dKm-F1-cxs"/>
+                                    <constraint firstItem="qzE-bu-G37" firstAttribute="leading" secondItem="mbN-3H-E66" secondAttribute="leading" id="jWK-nb-ZFM"/>
                                     <constraint firstAttribute="bottom" secondItem="IMq-gJ-D74" secondAttribute="bottom" constant="5" id="mT1-jD-gvT"/>
+                                    <constraint firstItem="qzE-bu-G37" firstAttribute="top" secondItem="mbN-3H-E66" secondAttribute="top" constant="5" id="v5T-LO-qws"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="bottomText" destination="IMq-gJ-D74" id="tGb-UA-fk7"/>
                                     <outlet property="imageView" destination="JRF-zN-I9l" id="Xqv-T5-YnM"/>
-                                    <outlet property="topText" destination="n3H-rE-bfD" id="RLf-kM-dMD"/>
+                                    <outlet property="topText" destination="qzE-bu-G37" id="2hE-Gt-sjx"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

@@ -39,22 +39,19 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
-        subscribeToOrientationChangeNotification()
-        rotated()
+        updateConstraintsBasedOnOrientation()
+        subscribeToNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         shareButton.isEnabled = imageView.image != nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
-        unsubscribeToOrientationChangeNotification()
+        unsubscribeFromNotifications()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -73,6 +70,21 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func resetTextFields() {
         topTextField.text = defaultTopTextFieldText
         bottomTextField.text = defaultBottomTextFieldText
+    }
+    
+    // MARK: Touch
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        
+        let touch = touches.first
+        if touch?.phase == UITouchPhase.began {
+            if topTextField.isFirstResponder {
+                topTextField.resignFirstResponder()
+            } else if bottomTextField.isFirstResponder {
+                bottomTextField.resignFirstResponder()
+            }
+        }
     }
     
     // MARK: UIImagePickerDelegate
@@ -171,7 +183,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         return keyboardSize.cgRectValue.height
     }
     
-    func rotated()
+    func updateConstraintsBasedOnOrientation()
     {
         if UIDeviceOrientationIsPortrait(UIDevice.current.orientation) {
             TopTextFieldVerticalSpacingConstraint.constant = 55
@@ -183,23 +195,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
     
-    func subscribeToKeyboardNotifications() {
+    func subscribeToNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateConstraintsBasedOnOrientation), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
-    func unsubscribeFromKeyboardNotifications() {
+    func unsubscribeFromNotifications() {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillShow, object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIKeyboardWillHide, object: nil)
-    }
-    
-    func subscribeToOrientationChangeNotification()
-    {
-        NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
-    }
-    
-    func unsubscribeToOrientationChangeNotification()
-    {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
