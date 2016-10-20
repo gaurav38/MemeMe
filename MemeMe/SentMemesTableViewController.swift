@@ -30,6 +30,10 @@ class SentMemesTableViewController: UITableViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tableView.setEditing(false, animated: true)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -68,7 +72,7 @@ class SentMemesTableViewController: UITableViewController {
         self.present(memeEditor, animated: true, completion: nil)
     }
     
-    @IBAction func eidtButtonPressed() {
+    @IBAction func editButtonPressed() {
         self.tableView.setEditing(!self.tableView.isEditing, animated: true)
         self.editButton.title = self.tableView.isEditing ? "Cancel" : "Edit"
     }

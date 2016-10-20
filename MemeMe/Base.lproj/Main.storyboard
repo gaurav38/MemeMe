@@ -165,7 +165,7 @@
         <scene sceneID="OpC-gF-ams">
             <objects>
                 <collectionViewController title="Collection View" id="HgL-1y-OjR" customClass="SentMemesCollectionViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="8wm-i1-OPD">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="8wm-i1-OPD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -183,7 +183,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="140" height="117"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="JRF-zN-I9l">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="JRF-zN-I9l">
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="70" id="w6X-iQ-lOa"/>
@@ -207,7 +207,6 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzE-bu-G37" userLabel="TopLabel">
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="5NV-Vr-Yu8"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="15" id="7il-ay-TSY"/>
                                             </constraints>
                                             <attributedString key="attributedText">
                                                 <fragment content="Label">
@@ -248,7 +247,6 @@
                     </collectionView>
                     <tabBarItem key="tabBarItem" title="Grid" image="collection-view" id="4Gl-Yv-2rc"/>
                     <navigationItem key="navigationItem" title="MemeMe" id="yDf-T6-3gT">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="5BH-VQ-C18" userLabel="Edit"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="cEG-pl-Nja">
                             <connections>
                                 <action selector="createNewMeme:" destination="HgL-1y-OjR" id="CN2-9J-Al5"/>
@@ -285,24 +283,25 @@
         <scene sceneID="GhF-J4-8bi">
             <objects>
                 <tableViewController title="Table View" id="uLb-IN-af5" customClass="SentMemesTableViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="fio-kA-bOJ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="fio-kA-bOJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="tintColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableViewCell" rowHeight="80" id="aN1-Go-Mbd" customClass="MemeTableViewCell" customModule="MemeMe" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="375" height="80"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MemeTableViewCell" rowHeight="90" id="aN1-Go-Mbd" customClass="MemeTableViewCell" customModule="MemeMe" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aN1-Go-Mbd" id="cZf-UP-o4W">
-                                    <frame key="frameInset" width="375" height="80"/>
+                                    <frame key="frameInset" width="375" height="89"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zoi-MX-aAd">
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oOm-vt-Pkf">
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="4sk-1b-2Dm"/>
+                                                        <constraint firstAttribute="height" constant="120" id="4sk-1b-2Dm"/>
                                                         <constraint firstAttribute="width" constant="120" id="d93-hV-sTG"/>
                                                     </constraints>
                                                 </imageView>
@@ -330,8 +329,9 @@
                                         </stackView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Zoi-MX-aAd" firstAttribute="top" secondItem="cZf-UP-o4W" secondAttribute="top" id="5lW-uB-T6J"/>
+                                        <constraint firstItem="Zoi-MX-aAd" firstAttribute="top" secondItem="cZf-UP-o4W" secondAttribute="top" constant="5" id="5lW-uB-T6J"/>
                                         <constraint firstAttribute="trailing" secondItem="Zoi-MX-aAd" secondAttribute="trailing" id="CnB-BT-hT3"/>
+                                        <constraint firstAttribute="bottom" secondItem="Zoi-MX-aAd" secondAttribute="bottom" constant="5" id="DFw-Ee-xwe"/>
                                         <constraint firstItem="Zoi-MX-aAd" firstAttribute="leading" secondItem="cZf-UP-o4W" secondAttribute="leading" id="po9-mi-YhF"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -349,9 +349,9 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="List" image="list-view" id="u17-bh-4fy"/>
                     <navigationItem key="navigationItem" title="MemeMe" id="HeH-M2-SJP">
-                        <barButtonItem key="leftBarButtonItem" title="Edit" id="7Rd-Ba-KlR" userLabel="Edit">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="lby-SH-kc1">
                             <connections>
-                                <action selector="eidtButtonPressed" destination="uLb-IN-af5" id="0CV-jX-A6E"/>
+                                <action selector="editButtonPressed" destination="uLb-IN-af5" id="L8g-3E-Aqd"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Zi8-Dg-gM4">
@@ -361,7 +361,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="editButton" destination="7Rd-Ba-KlR" id="afd-Hi-pMQ"/>
+                        <outlet property="editButton" destination="lby-SH-kc1" id="HDr-SL-H8Y"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HrX-ea-qMn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -382,7 +382,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="16e-UV-FkE"/>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="dBU-GU-iO6" firstAttribute="top" secondItem="16e-UV-FkE" secondAttribute="bottom" id="bYx-6c-G9H"/>
                             <constraint firstAttribute="trailing" secondItem="16e-UV-FkE" secondAttribute="trailing" id="dF8-ay-lYc"/>

@@ -47,12 +47,14 @@ class SentMemesCollectionViewController: UICollectionViewController {
             width = (view.frame.size.width - (4 * space)) / 5.0
             height = (view.frame.size.height - (2 * space)) / 3.0
         }
-        var itemSize: CGSize = CGSize()
-        itemSize.height = height
-        itemSize.width = width
+        if height > 0 && width > 0 {
+            var itemSize: CGSize = CGSize()
+            itemSize.height = height
+            itemSize.width = width
         
-        flowLayout.minimumInteritemSpacing = space
-        flowLayout.itemSize = itemSize
+            flowLayout.minimumInteritemSpacing = space
+            flowLayout.itemSize = itemSize
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -77,23 +79,6 @@ class SentMemesCollectionViewController: UICollectionViewController {
         detailsViewController.meme = memes[indexPath.row]
         self.navigationController?.pushViewController(detailsViewController, animated: true)
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-//        let deleteMenuItem = UIMenuItem(title: "Delete Meme", action: "delete:")
-//        UIMenuController.shared.menuItems = [deleteMenuItem]
-//        return true
-//    }
-//    
-//    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-//        return action == "delete:"
-//    }
-//    
-//    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-//        if action == "delete:" {
-//            appDelegate.memes.remove(at: indexPath.row)
-//            collectionView.deleteItems(at: [indexPath])
-//        }
-//    }
     
     func subscribeToOrientationChangeNotification()
     {
