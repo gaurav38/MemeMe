@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MemeMe/SentMemesTableViewController.swift"
-            timestampString = "498697324.531119"
+            timestampString = "498801936.206843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88">
+            startingLineNumber = "85"
+            endingLineNumber = "85">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -24,21 +24,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MemeMe/SentMemesTableViewController.swift"
-            timestampString = "498697324.531119"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "MemeMe/SentMemesTableViewController.swift"
-            timestampString = "498697324.531119"
+            timestampString = "498801936.206843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "100"
@@ -52,11 +38,25 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "MemeMe/SentMemesTableViewController.swift"
-            timestampString = "498697324.531119"
+            timestampString = "498801936.206843"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "93"
-            endingLineNumber = "93">
+            startingLineNumber = "97"
+            endingLineNumber = "97">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MemeMe/SentMemesTableViewController.swift"
+            timestampString = "498801936.206843"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -50,10 +50,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillDisappear(animated)
         unsubscribeFromNotifications()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -104,14 +100,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // MARK: UITextFieldDelegate
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        if textField == topTextField {
-            if textField.text == defaultTopTextFieldText {
-                textField.text = ""
-            }
-        } else if textField == bottomTextField {
-            if textField.text == defaultBottomTextFieldText {
-                textField.text = ""
-            }
+        if textField.text == defaultTopTextFieldText || textField.text == defaultBottomTextFieldText {
+            textField.text = ""
         }
     }
     

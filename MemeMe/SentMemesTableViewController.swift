@@ -17,20 +17,17 @@ class SentMemesTableViewController: UITableViewController {
     @IBOutlet weak var editButton: UIBarButtonItem!
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         if memes.count == 0 {
             createNewMeme()
         } else {
-            super.viewWillAppear(true)
             self.tableView.reloadData()
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         self.tableView.setEditing(false, animated: true)
     }
     
