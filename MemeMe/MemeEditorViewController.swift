@@ -141,16 +141,16 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 self.dismiss(animated: true, completion: nil)
             }
         }
-        self.present(activityViewContoller, animated: true, completion: nil)
+        present(activityViewContoller, animated: true, completion: nil)
     }
     
     @IBAction func cancelMeme(_ sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        dismiss(animated: true, completion: nil)
     }
     
     // Move the view when the keyboard covers the text field
     func keyboardWillShow(notification: NSNotification) {
-        if self.bottomTextField.isEditing {
+        if bottomTextField.isEditing {
             self.view.frame.origin.y = getKeyboardHeight(notification: notification) * (-1)
             screenScrolledUp = true
         }
@@ -198,7 +198,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         navigationBar.isHidden = true
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
-        self.memedImage = UIGraphicsGetImageFromCurrentImageContext()!
+        memedImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         navigationBar.isHidden = false
         toolBar.isHidden = false

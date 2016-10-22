@@ -22,7 +22,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         memes = appDelegate.memes
         updateItemSizeBasedOnOrientation()
         subscribeToOrientationChangeNotification()
-        self.collectionView?.reloadData()
+        collectionView?.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -60,16 +60,14 @@ class SentMemesCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MemesCollectionViewCell", for: indexPath) as! MemeCollectionViewCell
         let meme = memes[indexPath.row]
-        //cell.topText.text = meme.topText
         cell.imageView.image = meme.memedImage
-        //cell.bottomText.text = meme.bottomText
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let detailsViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailsViewController.meme = memes[indexPath.row]
-        self.navigationController?.pushViewController(detailsViewController, animated: true)
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
     func subscribeToOrientationChangeNotification()
@@ -84,6 +82,6 @@ class SentMemesCollectionViewController: UICollectionViewController {
     
     @IBAction func createNewMeme(_ sender: AnyObject) {
         let memeEditor = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-        self.present(memeEditor, animated: true, completion: nil)
+        present(memeEditor, animated: true, completion: nil)
     }
 }

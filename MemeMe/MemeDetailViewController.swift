@@ -31,7 +31,7 @@ class MemeDetailViewController: UIViewController {
         let touch = touches.first
         
         if touch?.phase == UITouchPhase.began {
-            self.navigationController?.setNavigationBarHidden(shouldHideNavBar, animated: true)
+            navigationController?.setNavigationBarHidden(shouldHideNavBar, animated: true)
             shouldHideNavBar = !shouldHideNavBar
         }
     }

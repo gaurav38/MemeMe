@@ -22,13 +22,13 @@ class SentMemesTableViewController: UITableViewController {
         if memes.count == 0 {
             createNewMeme()
         } else {
-            self.tableView.reloadData()
+            tableView.reloadData()
         }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.tableView.setEditing(false, animated: true)
+        tableView.setEditing(false, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,24 +53,24 @@ class SentMemesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailsViewController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailViewController") as! MemeDetailViewController
         detailsViewController.meme = memes[indexPath.row]
-        self.navigationController?.pushViewController(detailsViewController, animated: true)
+        navigationController?.pushViewController(detailsViewController, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             appDelegate.memes.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            self.editButton.title = "Edit"
+            editButton.title = "Edit"
         }
     }
     
     @IBAction func createNewMeme() {
         let memeEditor = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-        self.present(memeEditor, animated: true, completion: nil)
+        present(memeEditor, animated: true, completion: nil)
     }
     
     @IBAction func editButtonPressed() {
-        self.tableView.setEditing(!self.tableView.isEditing, animated: true)
-        self.editButton.title = self.tableView.isEditing ? "Cancel" : "Edit"
+        tableView.setEditing(!self.tableView.isEditing, animated: true)
+        editButton.title = self.tableView.isEditing ? "Cancel" : "Edit"
     }
 }
