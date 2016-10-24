@@ -28,7 +28,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="HDu-ah-0zx"/>
                                     <barButtonItem title="Album Button" style="plain" id="QwQ-Qq-Cii">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Kum-pc-p58">
-                                            <rect key="frame" x="99" y="7" width="60" height="30"/>
+                                            <rect key="frame" x="64" y="7" width="60" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Album">
                                                 <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,6 +46,19 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="1BK-6T-Tkv"/>
+                                    <barButtonItem style="plain" id="eLq-Ih-hVq">
+                                        <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="p96-zZ-F51">
+                                            <rect key="frame" x="265" y="7" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Font">
+                                                <color key="titleColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="selectFontButtonPressed:" destination="b0t-K6-qO0" eventType="touchUpInside" id="nCQ-Ih-rRe"/>
+                                            </connections>
+                                        </button>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="nGI-kB-ZQf"/>
                                 </items>
                                 <color key="barTintColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                             </toolbar>
@@ -62,7 +75,7 @@
                                     <constraint firstAttribute="height" constant="30" id="3nL-qi-LVn"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXF-Rb-cjA">
@@ -83,6 +96,9 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X9A-bR-Dwb">
+                                <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -93,6 +109,7 @@
                             <constraint firstItem="Nnd-GQ-DSd" firstAttribute="leading" secondItem="v1z-h7-jwA" secondAttribute="leading" id="Jjj-IE-EAD"/>
                             <constraint firstItem="Nnd-GQ-DSd" firstAttribute="top" secondItem="HXF-Rb-cjA" secondAttribute="bottom" constant="55" id="MTI-EQ-vgb"/>
                             <constraint firstItem="Dnf-vP-bDt" firstAttribute="top" secondItem="WBV-cD-sUl" secondAttribute="bottom" id="PoY-mn-gcl"/>
+                            <constraint firstItem="X9A-bR-Dwb" firstAttribute="leading" secondItem="v1z-h7-jwA" secondAttribute="leading" id="Qnj-Pw-AXs"/>
                             <constraint firstItem="HXF-Rb-cjA" firstAttribute="leading" secondItem="v1z-h7-jwA" secondAttribute="leading" id="aAg-SJ-D0h"/>
                             <constraint firstAttribute="trailing" secondItem="Dnf-vP-bDt" secondAttribute="trailing" id="bxr-xc-UvU"/>
                             <constraint firstItem="Dnf-vP-bDt" firstAttribute="leading" secondItem="v1z-h7-jwA" secondAttribute="leading" id="cIk-GU-NuQ"/>
@@ -100,12 +117,13 @@
                             <constraint firstAttribute="trailing" secondItem="Nnd-GQ-DSd" secondAttribute="trailing" id="hnf-TW-jOB"/>
                             <constraint firstAttribute="trailing" secondItem="HXF-Rb-cjA" secondAttribute="trailing" id="qPH-0a-AWK"/>
                             <constraint firstItem="HXF-Rb-cjA" firstAttribute="top" secondItem="v1z-h7-jwA" secondAttribute="top" id="rBt-LT-h7k"/>
+                            <constraint firstAttribute="trailing" secondItem="X9A-bR-Dwb" secondAttribute="trailing" id="ulH-Ha-4im"/>
                             <constraint firstAttribute="trailing" secondItem="WBV-cD-sUl" secondAttribute="trailing" id="xbp-Pl-a8c"/>
+                            <constraint firstItem="X9A-bR-Dwb" firstAttribute="centerY" secondItem="v1z-h7-jwA" secondAttribute="centerY" id="xgH-At-Ews"/>
                             <constraint firstItem="WBV-cD-sUl" firstAttribute="top" secondItem="HXF-Rb-cjA" secondAttribute="bottom" id="zCt-nl-u01"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="BottomTextFieldVerticalSpacingConstraint" destination="hO5-ek-pDX" id="Q2M-jB-gWZ"/>
                         <outlet property="TopTextFieldVerticalSpacingConstraint" destination="MTI-EQ-vgb" id="fJm-4f-ajr"/>
@@ -113,6 +131,7 @@
                         <outlet property="cameraButton" destination="nM2-ky-9Gi" id="XA6-Ed-e6G"/>
                         <outlet property="imageView" destination="WBV-cD-sUl" id="0Oq-Mp-9ya"/>
                         <outlet property="navigationBar" destination="HXF-Rb-cjA" id="mCS-T9-t0e"/>
+                        <outlet property="pickerView" destination="X9A-bR-Dwb" id="7VC-QE-aJl"/>
                         <outlet property="shareButton" destination="RWo-1D-Ija" id="Kdg-A7-T4g"/>
                         <outlet property="toolBar" destination="Dnf-vP-bDt" id="Ysj-qT-hAN"/>
                         <outlet property="topTextField" destination="Nnd-GQ-DSd" id="bNM-3P-56I"/>
@@ -350,7 +369,13 @@
                             <constraint firstItem="16e-UV-FkE" firstAttribute="leading" secondItem="srD-hM-EGc" secondAttribute="leading" id="yZm-Cc-XZg"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Wgo-dj-AVs"/>
+                    <navigationItem key="navigationItem" id="Wgo-dj-AVs">
+                        <barButtonItem key="rightBarButtonItem" title="Edit" id="gFa-J5-8qF" userLabel="Edit">
+                            <connections>
+                                <action selector="editButtonPressed:" destination="k1F-6i-ruO" id="7lW-fe-0x8"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="imageView" destination="16e-UV-FkE" id="C1W-B9-fcE"/>

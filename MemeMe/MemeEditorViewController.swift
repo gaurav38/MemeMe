@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -19,23 +19,40 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var TopTextFieldVerticalSpacingConstraint: NSLayoutConstraint!
     @IBOutlet weak var BottomTextFieldVerticalSpacingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var pickerView: UIPickerView!
     
     let defaultTopTextFieldText = "TOP"
     let defaultBottomTextFieldText = "BOTTOM"
+    var pickerViewData = ["HelveticaNeue-CondensedBlack"]
     
+    var isEditingMeme = false
+    var imageToEdit: UIImage!
     var screenScrolledUp = false
     var memedImage:UIImage!
+    var isShowingFontPicker = false
     
-    let memeTextAttributes = [
+    var memeTextAttributes = [
         NSStrokeColorAttributeName : UIColor.black,
         NSForegroundColorAttributeName : UIColor.white,
         NSFontAttributeName : UIFont(name : "HelveticaNeue-CondensedBlack", size : 40)!,
-        NSStrokeWidthAttributeName : -2] as [String : Any]
+        NSStrokeWidthAttributeName : -3.6] as [String : Any]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateTextFieldsAppearances(textField: topTextField)
         updateTextFieldsAppearances(textField: bottomTextField)
+        if isEditingMeme {
+            imageView.image = imageToEdit
+            navigationBar.isHidden = false
+        }
+        pickerView.delegate = self
+        pickerView.dataSource = self
+        for familyName in UIFont.familyNames as [String] {
+            for fontName in UIFont.fontNames(forFamilyName: familyName) as [String] {
+                pickerViewData.append(fontName)
+            }
+            
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,6 +61,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         subscribeToNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)
         shareButton.isEnabled = imageView.image != nil
+        pickerView.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -207,8 +225,51 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func save() {
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: self.memedImage)
         (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
-        
     }
+    
+    // MARK: UIPickerView delegates
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerViewData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerViewData[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        let fontName = pickerViewData[row]
+        let myTitle = NSAttributedString(string: fontName, attributes: [NSFontAttributeName:UIFont(name: fontName, size: 15.0)!,NSForegroundColorAttributeName:UIColor.blue])
+        return myTitle
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        memeTextAttributes[NSFontAttributeName] = UIFont(name: pickerViewData[row], size: 40)
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.textAlignment = NSTextAlignment.center
+        bottomTextField.textAlignment = NSTextAlignment.center
+    }
+    
+    @IBAction func selectFontButtonPressed(_ sender: AnyObject) {
+        if isShowingFontPicker {
+            pickerView.isHidden = true
+            topTextField.isHidden = false
+            imageView.isHidden = false
+            bottomTextField.isHidden = false
+        } else {
+            pickerView.isHidden = false
+            topTextField.isHidden = true
+            imageView.isHidden = true
+            bottomTextField.isHidden = true
+        }
+        isShowingFontPicker = !isShowingFontPicker
+    }
+    
 
 }
 

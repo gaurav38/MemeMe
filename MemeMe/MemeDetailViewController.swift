@@ -35,4 +35,12 @@ class MemeDetailViewController: UIViewController {
             shouldHideNavBar = !shouldHideNavBar
         }
     }
+    
+    @IBAction func editButtonPressed(_ sender: AnyObject) {
+        let memeEditor = self.storyboard!.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        memeEditor.isEditingMeme = true
+        memeEditor.imageToEdit = meme.originalImage
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        present(memeEditor, animated: true, completion: nil)
+    }
 }

@@ -18,7 +18,7 @@ class SentMemesTableViewController: UITableViewController {
     var appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+        super.viewWillAppear(animated)
         if memes.count == 0 {
             createNewMeme()
         } else {
