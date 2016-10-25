@@ -75,7 +75,7 @@
                                     <constraint firstAttribute="height" constant="30" id="3nL-qi-LVn"/>
                                 </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXF-Rb-cjA">
@@ -167,7 +167,7 @@
             <objects>
                 <navigationController id="Kdb-El-Sdx" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Grid" image="collection-view" id="IIP-wE-kX4"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="B2p-M1-3bV">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B2p-M1-3bV">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -245,7 +245,7 @@
             <objects>
                 <navigationController id="NG8-C5-Hqq" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="List" image="list-view" id="8C6-LQ-mYr"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="qbZ-DY-Yfc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qbZ-DY-Yfc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -273,7 +273,7 @@
                                 <rect key="frame" x="0.0" y="92" width="375" height="90"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aN1-Go-Mbd" id="cZf-UP-o4W">
-                                    <frame key="frameInset" width="375" height="89"/>
+                                    <frame key="frameInset" width="375" height="89.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zoi-MX-aAd">
